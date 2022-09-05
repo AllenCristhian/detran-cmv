@@ -17,22 +17,18 @@ const inpVel = document.getElementById('vel')
 const inpVelV = document.getElementById('velV')
 const btnConsult = document.getElementById('consult')
 
-const list = document.getElementById('resCnsult')
+const list = document.getElementById('resConsult')
 
 const nomeCond = document.getElementById('nomeCond')
-const stts = document.getElementById('stts')
-const msg = document.getElementById('msg')
 
-let sttsRes = 'Não Mutado';
-let msgRes = 'Dirija com atenção e siga em segurança!';
+let sttsRes;
+let msgRes;
 
 btnConsult.addEventListener('click' , () => {
   consultMV()
 })
 
 function consultMV () { 
-
-  verificarList()
 
   if (verificarCampo() == false) {
 
@@ -48,48 +44,44 @@ function consultMV () {
 }
 
 function verificarCampo () {
+
   if(inpNome.value == '' || inpPlaca.value  == '' || inpVel.value  == '' ) {
     return inpNome.style.border = 'solid 0.5px #ff0000' , inpPlaca.style.border = 'solid 0.5px #ff0000' , inpVel.style.border = 'solid 0.5px #ff0000' , inpVelV.style.border = 'solid 0.5px #ff0000'
   } else {
     return false
   }
+
 }
 
 function verificarMulta (vel) {
-  console.log(vel)
 
-  // if ( vel < (inpVelV.value / 2) ) {
-  //   console.log('Baixa velocidade, aumente sua velocidade')    
-  // } else 
-  // if ( vel > (inpVelV.value) || vel <= (inpVelV.value + 20) ) {
-  //   console.log('velocidade acima do permitido, reduza')
-  // } else 
-  // if ( vel > (inpVelV.value + 20) ) {
-  //   console.log('velocidade ultrapassou o maximo aceitavel, reduza imediatamente')
-  // } else {
-  //   console.log('velocidade ideal')
-  // }
+  if ( vel < (inpVelV.value / 2) ) {
 
-  // if ( vel < (inpVelV.value / 2) ) {
-  //   console.log('Baixa velocidade, aumente sua velocidade')
-  // } else 
-  // if ( vel >= (inpVelV.value / 2) && vel <= inpVelV.value ) {
-  //   console.log('velocidade ideal')
-  // } else 
-  // if ( vel > (inpVelV.value) || vel < (inpVelV.value + 20)) {
-  //   console.log('velocidade acima do permitido, reduza')
-  // } else 
-  // if ( vel >= (inpVelV.value + 25)) {
-  //   console.log('velocidade ultrapassou o maximo aceitavel, reduza imediatamente')
-  // }
+    sttsRes = 'Atencao'
+    msgRes = 'Você dirigiu abaixo da velocidade miníma da via, aumente sua velocidade!'
+    msgRes += '\n Dirija sempre com atenção!'
+
+  } else 
+  if ( vel >= (inpVelV.value / 2) && vel <= inpVelV.value ) {
+
+    sttsRes = 'Continue'
+    msgRes = 'Você manteve sua velocidade ideal!'
+    msgRes += '\n Dirija sempre com atenção!'
+
+  } else 
+  if ( vel > (inpVelV.value) ) {
+
+    sttsRes = 'Urgente'
+    msgRes = 'Você ultrapassou a velocidade ideal permitida na via, reduza a velocidade!'
+    msgRes += '\n Dirija sempre com atenção!'
+    
+  }
 
   createCard(inpNome.value)
 
 }
 
 function createCard (nomeC) {
-
-  console.log(nomeC)
 
   const card = document.createElement('div')
   card.classList.add('card')
@@ -117,26 +109,6 @@ function createCard (nomeC) {
   card.appendChild(section)
 
   list.appendChild(card)
-
-}
-
-function verificarList () {
-  // let items = document.querySelectorAll('.card')
-  let item = document.querySelector('.card')
-
-  let items = document.getElementById('resConsult')
-
-  console.log(items)
-
-  
-
-  // if ( items.length > 5 ) {
-  //   for (child of items.children){
-  //     child.remove();
-  //   }
-  // } else {
-  //   return
-  // }
 
 }
 
