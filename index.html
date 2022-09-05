@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Detran - CMV</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Link Js -->
+  <script src="js/index.js" defer></script>
+
+</head>
+<body>
+  
+  <main>
+    <header>
+      <h1>Consultar Multa Velocidade</h1>
+      <p id="data"></p>
+    </header>
+    <section>
+
+      <div class="field">
+        <label for="nome">Nome do condutor</label>
+        <input type="text" name="nome" id="nome" placeholder="Informe o nome do condutor">
+      </div>
+
+      <div class="field">
+        <label for="placa">Placa Veículo</label>
+        <input type="text" name="placa" id="placa" placeholder="Informe a placa do veículo">
+      </div>
+
+      <div class="vels">
+        <div class="field">
+          <label for="vel">Velocidade Km/h</label>
+          <input type="number" name="vel" id="vel" placeholder="Informe a velocidade do veículo">
+        </div>
+        <div class="field">
+          <label for="velV">Velocidade Via Km/h</label>
+          <input type="number" name="velV" id="velV" placeholder="Informe a velocidade da via">
+        </div>
+      </div>
+
+    </section>
+    <section id="resConsult">
+      <!-- <div class="card">
+        <header>
+          <p class="nomeCond" id="nomeCond">condutor</p>
+          <p class="stts" id="stts">mutado</p>
+        </header>
+        <section>
+          <p class="msg" id="msg">veiculo mutado por falta de velocidade</p>
+        </section>
+      </div> -->
+    </section>
+    <footer>
+      <button class="consult" id="consult">
+        Consultar Multa
+      </button>
+    </footer>
+  </main>
+
+</body>
+</html>
